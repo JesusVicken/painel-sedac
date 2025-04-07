@@ -1,10 +1,7 @@
-
 import { Grid, Typography, Card, CardContent } from '@mui/material';
 import Servidores from './Servidores';
 import Ativos from './Ativos';
-//import LinhaAtivos from './LinhaAtivos';
 import ServidoresPorSecao from './ServidoresPorSecao';
-//import LinhaAtivos from './LinhaAtivos';
 
 const Dashboard = () => {
     const servidoresData = [
@@ -20,22 +17,44 @@ const Dashboard = () => {
     return (
         <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
-                <Card className="rounded-2xl shadow-md bg-gray-800 text-white">
+                <Card
+                    className="rounded-2xl shadow-md text-white"
+                    sx={{
+                        bgcolor: '#0f172a', // fundo 100% igual ao background geral
+                    }}
+                >
                     <CardContent>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
+                        <Typography
+                            variant="h6"
+                            fontWeight="bold"
+                            gutterBottom
+                            className="text-white text-center"
+                        >
                             Servidores por Data Center
                         </Typography>
+
                         <Servidores data={servidoresData} />
                     </CardContent>
                 </Card>
             </Grid>
 
             <Grid item xs={12} md={6}>
-                <Card className="rounded-2xl shadow-md bg-gray-800 text-white">
+                <Card
+                    className="rounded-2xl shadow-md text-white"
+                    sx={{
+                        bgcolor: '#0f172a', // fundo uniforme
+                    }}
+                >
                     <CardContent>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom marginLeft='130px'>
-                            Ativos por Local
+                        <Typography
+                            variant="h6"
+                            fontWeight="bold"
+                            gutterBottom
+                            className="text-white text-center"
+                        >
+                            Ativos por Data Center
                         </Typography>
+
                         <Ativos data={ativosData} />
                     </CardContent>
                 </Card>
@@ -43,7 +62,6 @@ const Dashboard = () => {
 
             <Grid item xs={12}>
                 <ServidoresPorSecao />
-                {/*<LinhaAtivos /> */}
             </Grid>
         </Grid>
     );

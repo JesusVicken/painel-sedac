@@ -10,7 +10,7 @@ import {
 
 const Servidores = ({ data }) => (
     <div className="p-4 bg-[#0f172a] rounded-2xl shadow-lg text-white" style={{ width: '330px', height: '360px' }}>
-        <h2 className="text-xl font-semibold mb-4">Total de Servidores</h2>
+        {/* <h2 className="text-xl font-semibold mb-4">Total de Servidores</h2> */}
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
                 data={data}
