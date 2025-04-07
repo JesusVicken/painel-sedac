@@ -7,18 +7,15 @@ const Ativos = ({ data }) => {
 
     return (
         <div
-            className="p-4 bg-[#0f172a] rounded-2xl shadow-lg text-white"
+            className="bg-[#0f172a] rounded-2xl shadow-lg text-white p-2 sm:p-4"
             style={{
                 width: '100%',
                 maxWidth: '450px',
                 height: '360px',
                 margin: '0 auto',
-                padding: '1rem',
                 boxSizing: 'border-box',
             }}
         >
-
-            {/* <h2 className="text-xl font-semibold mb-4">Total de Ativos nos Data Centers</h2> */}
             <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                     <Pie
@@ -28,7 +25,7 @@ const Ativos = ({ data }) => {
                         cx="50%"
                         cy="50%"
                         innerRadius={60}
-                        outerRadius={120} // ⬅️ Aumentando o raio para preencher melhor
+                        outerRadius={120}
                         label={({ name, value }) => `${name}: ${value}`}
                     >
                         {data.map((entry, index) => (
