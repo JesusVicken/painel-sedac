@@ -34,7 +34,7 @@ const cards = [
 const ResumoCards = () => (
     <Grid container spacing={2}>
         {cards.map((card, index) => (
-            <Grid item xs={12} sm={6} md={6} key={index}>
+            <Grid item xs={6} sm={4} md={3} key={index}>
                 <Card
                     sx={{
                         backgroundColor: card.bgColor,
@@ -43,18 +43,19 @@ const ResumoCards = () => (
                         color: '#fff',
                         transition: 'transform 0.2s',
                         '&:hover': { transform: 'scale(1.03)' },
+                        minHeight: 100,
                     }}
                 >
-                    <CardContent sx={{ px: 2, py: 2 }}>
-                        <Box display="flex" alignItems="center" gap={2}>
-                            <Box sx={{ fontSize: 40, color: '#fff' }}>
+                    <CardContent sx={{ px: 1.5, py: 2 }}>
+                        <Box display="flex" alignItems="center" gap={1}>
+                            <Box sx={{ fontSize: 32, color: '#fff' }}>
                                 {card.icon}
                             </Box>
                             <Box>
-                                <Typography variant="subtitle2" color="inherit">
+                                <Typography variant="subtitle2" fontSize={12} color="inherit">
                                     {card.title}
                                 </Typography>
-                                <Typography variant="h5" fontWeight="bold" color="inherit">
+                                <Typography variant="h6" fontWeight="bold" color="inherit">
                                     {card.value}
                                 </Typography>
                             </Box>
