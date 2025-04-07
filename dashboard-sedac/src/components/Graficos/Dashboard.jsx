@@ -65,7 +65,8 @@ const Dashboard = () => {
                             sx={{
                                 color: '#fff',
                                 textAlign: 'center',
-                                fontSize: { xs: '1rem', sm: '1.25rem' }
+                                fontSize: { xs: '1rem', sm: '1.25rem' },
+
                             }}
                         >
                             Ativos por Data Center
