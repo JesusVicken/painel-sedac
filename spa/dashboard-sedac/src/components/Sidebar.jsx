@@ -6,6 +6,7 @@ import {
     ListItemText,
     Divider,
     Box,
+    useMediaQuery,
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -14,23 +15,11 @@ import DevicesIcon from '@mui/icons-material/Devices';
 
 const drawerWidth = 240;
 
-const Sidebar = () => {
-    return (
-        <Drawer
-            variant="permanent"
-            sx={{
-                width: drawerWidth,
-                flexShrink: 0,
-                [`& .MuiDrawer-paper`]: {
-                    width: drawerWidth,
-                    boxSizing: 'border-box',
-                    backgroundColor: '#004d2b',
-                    color: '#fff',
-                },
-            }}
-        >
-            {/* 🔻 Removido o <Toolbar /> para colar no topo */}
+const Sidebar = ({ mobileOpen, handleDrawerToggle }) => {
+    const isMobile = useMediaQuery('(max-width:600px)');
 
+    const drawerContent = (
+        <Box sx={{ width: drawerWidth, backgroundColor: '#004d2b', height: '100%', color: '#fff' }}>
             <Box display="flex" justifyContent="center" alignItems="center" py={1} mt={1}>
                 <img
                     src="/camaraLogo.jpeg"
@@ -43,40 +32,73 @@ const Sidebar = () => {
                 />
             </Box>
 
-            <Box sx={{ overflow: 'auto' }}>
-                <List>
-                    <Divider sx={{ my: 1, borderColor: 'rgba(255,255,255,0.2)' }} />
+            <List>
+                <Divider sx={{ my: 1, borderColor: 'rgba(255,255,255,0.2)' }} />
+                <ListItem button>
+                    <ListItemIcon sx={{ color: '#fff' }}>
+                        <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Dashboard Geral" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon sx={{ color: '#fff' }}>
+                        <DnsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Servidores" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon sx={{ color: '#fff' }}>
+                        <DevicesIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Ativos" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon sx={{ color: '#fff' }}>
+                        <StorageIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Racks" />
+                </ListItem>
+            </List>
+        </Box>
+    );
 
-                    <ListItem button>
-                        <ListItemIcon sx={{ color: '#fff' }}>
-                            <DashboardIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Dashboard Geral" />
-                    </ListItem>
+    return (
+        <>
+            {/* Drawer móvel (celular) */}
+            {isMobile && (
+                <Drawer
+                    variant="temporary"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    ModalProps={{ keepMounted: true }}
+                    sx={{
+                        display: { xs: 'block', sm: 'none' },
+                        '& .MuiDrawer-paper': { width: drawerWidth, backgroundColor: '#004d2b', color: '#fff' },
+                    }}
+                >
+                    {drawerContent}
+                </Drawer>
+            )}
 
-                    <ListItem button>
-                        <ListItemIcon sx={{ color: '#fff' }}>
-                            <DnsIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Servidores" />
-                    </ListItem>
-
-                    <ListItem button>
-                        <ListItemIcon sx={{ color: '#fff' }}>
-                            <DevicesIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Ativos" />
-                    </ListItem>
-
-                    <ListItem button>
-                        <ListItemIcon sx={{ color: '#fff' }}>
-                            <StorageIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Racks" />
-                    </ListItem>
-                </List>
-            </Box>
-        </Drawer>
+            {/* Drawer fixo (desktop) */}
+            {!isMobile && (
+                <Drawer
+                    variant="permanent"
+                    sx={{
+                        width: drawerWidth,
+                        flexShrink: 0,
+                        [`& .MuiDrawer-paper`]: {
+                            width: drawerWidth,
+                            boxSizing: 'border-box',
+                            backgroundColor: '#004d2b',
+                            color: '#fff',
+                        },
+                    }}
+                >
+                    {drawerContent}
+                </Drawer>
+            )}
+        </>
     );
 };
 

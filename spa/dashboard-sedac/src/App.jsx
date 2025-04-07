@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="flex bg-gray-900 min-h-screen text-white">
       <Sidebar />
-      <main className="flex-grow ml-[100px]">
+      <main className="flex-grow ml-[40px]">
         <Header filtro={filtro} setFiltro={setFiltro} />
         <Toolbar />
         <Box className="p-4 space-y-8">

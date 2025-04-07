@@ -33,7 +33,7 @@ const Dashboard = () => {
             <Grid item xs={12} md={6}>
                 <Card className="rounded-2xl shadow-md bg-gray-800 text-white">
                     <CardContent>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom marginLeft='160px'>
+                        <Typography variant="h6" fontWeight="bold" gutterBottom marginLeft='130px'>
                             Ativos por Local
                         </Typography>
                         <Ativos data={ativosData} />
