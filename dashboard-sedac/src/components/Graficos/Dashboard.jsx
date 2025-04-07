@@ -75,7 +75,7 @@ const Dashboard = () => {
                 </Card>
             </Grid>
 
-            <Grid item xs={12} sx={{ marginTop: { xs: 1, md: 0 } }}>
+            <Grid item xs={12} sx={{ marginTop: { xs: 1, md: 0} }}>
                 <ServidoresPorSecao />
             </Grid>
         </Grid>
