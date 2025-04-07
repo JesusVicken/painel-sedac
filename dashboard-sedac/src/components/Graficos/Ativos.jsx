@@ -7,12 +7,12 @@ const Ativos = ({ data }) => {
 
     return (
         <div
-            className="p-4 bg-[#0f172a] rounded-2xl shadow-lg text-white"
+            className="bg-[#0f172a] rounded-2xl shadow-lg text-white"
             style={{
-                width: '100%',
-                maxWidth: '450px',
+                width: '101%',
+                maxWidth: '550px',
                 height: '360px',
-                margin: '0 auto' // Centraliza no mobile
+                margin: '0 auto' // Centraliza o gráfico
             }}
         >
             <ResponsiveContainer width="100%" height={300}>
