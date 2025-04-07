@@ -32,39 +32,90 @@ const cards = [
 ];
 
 const ResumoCards = () => (
-    <Grid container spacing={2}>
-        {cards.map((card, index) => (
-            <Grid item xs={6} sm={4} md={3} key={index}>
-                <Card
-                    sx={{
-                        backgroundColor: card.bgColor,
-                        borderRadius: 4,
-                        boxShadow: 3,
-                        color: '#fff',
-                        transition: 'transform 0.2s',
-                        '&:hover': { transform: 'scale(1.03)' },
-                        minHeight: 100,
-                    }}
-                >
-                    <CardContent sx={{ px: 1.5, py: 2 }}>
-                        <Box display="flex" alignItems="center" gap={1}>
-                            <Box sx={{ fontSize: 32, color: '#fff' }}>
-                                {card.icon}
+    <Box sx={{
+        overflowX: 'hidden',
+        px: { xs: 0.5, md: 4 }, // Padding ainda menor no mobile
+        py: 4,
+        width: '100%'
+    }}>
+        <Grid container spacing={1} sx={{ // Espaçamento reduzido entre cards
+            width: '100%',
+            margin: 0,
+            '& .MuiGrid-item': {
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '4px !important' // Padding mínimo entre os cards
+            }
+        }}>
+            {cards.map((card, index) => (
+                <Grid item xs={6} sm={4} md={3} key={index} sx={{
+                    // Garante que o último card não fique sozinho
+                    '&:nth-last-child(1):nth-child(odd)': {
+                        width: '100%'
+                    }
+                }}>
+                    <Card
+                        sx={{
+                            backgroundColor: card.bgColor,
+                            borderRadius: 2, // Bordas mais suaves
+                            boxShadow: 2, // Sombra mais suave
+                            color: '#fff',
+                            transition: 'transform 0.2s',
+                            '&:hover': { transform: 'scale(1.02)' }, // Efeito hover mais sutil
+                            height: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            minHeight: { xs: 100, sm: 120 } // Altura menor no mobile
+                        }}
+                    >
+                        <CardContent sx={{
+                            px: 1,
+                            py: 1.5,
+                            flexGrow: 1,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between'
+                        }}>
+                            <Box display="flex" alignItems="flex-start" gap={1}>
+                                <Box sx={{
+                                    fontSize: { xs: 24, sm: 32 }, // Ícone menor no mobile
+                                    color: '#fff',
+                                    mt: 0.5
+                                }}>
+                                    {card.icon}
+                                </Box>
+                                <Box sx={{ flexGrow: 1 }}>
+                                    <Typography
+                                        variant="subtitle2"
+                                        fontSize={{ xs: 10, sm: 12 }} // Texto menor no mobile
+                                        color="inherit"
+                                        sx={{
+                                            display: '-webkit-box',
+                                            WebkitLineClamp: 2, // Limita a 2 linhas
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            lineHeight: 1.2
+                                        }}
+                                    >
+                                        {card.title}
+                                    </Typography>
+                                    <Typography
+                                        variant="h6"
+                                        fontWeight="bold"
+                                        color="inherit"
+                                        fontSize={{ xs: 14, sm: 16 }} // Tamanho ajustável
+                                    >
+                                        {card.value}
+                                    </Typography>
+                                </Box>
                             </Box>
-                            <Box>
-                                <Typography variant="subtitle2" fontSize={12} color="inherit">
-                                    {card.title}
-                                </Typography>
-                                <Typography variant="h6" fontWeight="bold" color="inherit">
-                                    {card.value}
-                                </Typography>
-                            </Box>
-                        </Box>
-                    </CardContent>
-                </Card>
-            </Grid>
-        ))}
-    </Grid>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            ))}
+        </Grid>
+    </Box>
 );
 
 export default ResumoCards;

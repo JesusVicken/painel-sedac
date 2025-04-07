@@ -6,15 +6,13 @@ import { Box, Toolbar } from '@mui/material';
 import { useState } from 'react';
 import Dashboard from './components/Graficos/Dashboard';
 
-const drawerWidth = 240;
-
 function App() {
   const [filtro, setFiltro] = useState('');
 
   return (
     <div className="flex bg-gray-900 min-h-screen text-white">
       <Sidebar />
-      <main className="flex-grow ml-[40px]">
+      <main className="flex-grow overflow-hidden">
         <Header filtro={filtro} setFiltro={setFiltro} />
         <Toolbar />
         <Box className="p-4 space-y-8">

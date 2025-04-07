@@ -20,7 +20,7 @@ const Dashboard = () => {
                 <Card
                     className="rounded-2xl shadow-md text-white"
                     sx={{
-                        bgcolor: '#0f172a', // fundo 100% igual ao background geral
+                        bgcolor: '#0f172a', 
                     }}
                 >
                     <CardContent>
