@@ -15,24 +15,34 @@ const Dashboard = () => {
     ];
 
     return (
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 2, md: 4 }} sx={{
+            width: '100%',
+            marginLeft: { xs: '-8px', sm: 0 }, // Corrige o alinhamento no mobile
+            paddingLeft: { xs: '8px', sm: 0 } // Compensa o margin negativo
+        }}>
             <Grid item xs={12} md={6}>
                 <Card
-                    className="rounded-2xl shadow-md text-white"
                     sx={{
-                        bgcolor: '#0f172a', 
+                        bgcolor: '#0f172a',
+                        borderRadius: { xs: '8px', md: '16px' },
+                        boxShadow: { xs: 1, md: 3 },
+                        color: '#fff',
+                        marginLeft: { xs: 0, md: 0 }
                     }}
                 >
-                    <CardContent>
+                    <CardContent sx={{ p: { xs: 1, sm: 2 } }}>
                         <Typography
                             variant="h6"
                             fontWeight="bold"
                             gutterBottom
-                            className="text-white text-center"
+                            sx={{
+                                color: '#fff',
+                                textAlign: 'center',
+                                fontSize: { xs: '1rem', sm: '1.25rem' }
+                            }}
                         >
                             Servidores por Data Center
                         </Typography>
-
                         <Servidores data={servidoresData} />
                     </CardContent>
                 </Card>
@@ -40,27 +50,32 @@ const Dashboard = () => {
 
             <Grid item xs={12} md={6}>
                 <Card
-                    className="rounded-2xl shadow-md text-white"
                     sx={{
-                        bgcolor: '#0f172a', // fundo uniforme
+                        bgcolor: '#0f172a',
+                        borderRadius: { xs: '8px', md: '16px' },
+                        boxShadow: { xs: 1, md: 3 },
+                        color: '#fff'
                     }}
                 >
-                    <CardContent>
+                    <CardContent sx={{ p: { xs: 1, sm: 2 } }}>
                         <Typography
                             variant="h6"
                             fontWeight="bold"
                             gutterBottom
-                            className="text-white text-center"
+                            sx={{
+                                color: '#fff',
+                                textAlign: 'center',
+                                fontSize: { xs: '1rem', sm: '1.25rem' }
+                            }}
                         >
                             Ativos por Data Center
                         </Typography>
-
                         <Ativos data={ativosData} />
                     </CardContent>
                 </Card>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid item xs={12} sx={{ marginTop: { xs: 1, md: 0 } }}>
                 <ServidoresPorSecao />
             </Grid>
         </Grid>
